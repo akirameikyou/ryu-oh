@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="合氣道用具ブランド「龍王」の公式直販サイト。道衣・袴・武器・袋。">
+<title>龍王 RYU-OH — 合氣道用具</title>
+<style>
+  :root{
+    --paper:#fcfcfb;      /* 清潔な紙白（冷たすぎない） */
+    --paper-2:#f5f5f3;
+    --ink:#15161a;        /* 墨 */
+    --ink-soft:#4d4f57;
+    --ink-faint:#8b8d96;
+    --hair:rgba(21,22,26,.13);
+    --hair-2:rgba(21,22,26,.24);
+    --navy:#1f2a6e;       /* 龍王 紺 */
+    --gold:#a97c3c;       /* 龍王 金 */
+    --deep:#0f1014;       /* 観測記録の地 */
+    --deep-ink:#f0f1f4;
+    --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"MS PMincho",serif;
+    --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+    --latin:"Optima","Palatino Linotype",Georgia,serif;
+    --wrap:74rem;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{ --paper:#0f1013; --paper-2:#15171c; --ink:#eef0f4; --ink-soft:#b3b8c2; --ink-faint:#71757f;
+      --hair:rgba(238,240,244,.13); --hair-2:rgba(238,240,244,.24); --navy:#9aa3d9; --gold:#cfa25c; --deep:#08090c; --deep-ink:#f0f1f4; }
+  }
+  :root[data-theme="light"]{ --paper:#fcfcfb; --paper-2:#f5f5f3; --ink:#15161a; --ink-soft:#4d4f57; --ink-faint:#8b8d96;
+    --hair:rgba(21,22,26,.13); --hair-2:rgba(21,22,26,.24); --navy:#1f2a6e; --gold:#a97c3c; --deep:#0f1014; --deep-ink:#f0f1f4; }
+  :root[data-theme="dark"]{ --paper:#0f1013; --paper-2:#15171c; --ink:#eef0f4; --ink-soft:#b3b8c2; --ink-faint:#71757f;
+    --hair:rgba(238,240,244,.13); --hair-2:rgba(238,240,244,.24); --navy:#9aa3d9; --gold:#cfa25c; --deep:#08090c; --deep-ink:#f0f1f4; }
+
+  *{ box-sizing:border-box; }
+  .ryuoh{ background:var(--paper); color:var(--ink); font-family:var(--gothic); line-height:1.9; letter-spacing:.02em; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  .ryuoh img{ display:block; max-width:100%; }
+  .wrap{ max-width:var(--wrap); margin:0 auto; padding:0 7vw; }
+  h1,h2,h3{ font-family:var(--mincho); font-weight:400; letter-spacing:.08em; text-wrap:balance; margin:0; }
+  .eyebrow{ font-family:var(--latin); text-transform:uppercase; letter-spacing:.42em; font-size:.64rem; color:var(--gold); }
+  .ensub{ font-family:var(--latin); font-style:italic; letter-spacing:.06em; font-size:.75rem; color:var(--ink-faint); margin:.5rem 0 0; }
+  .vtext{ writing-mode:vertical-rl; text-orientation:upright; font-family:var(--mincho); letter-spacing:.3em; }
+
+  /* nav */
+  nav.bar{ position:sticky; top:0; z-index:40; background:color-mix(in srgb,var(--paper) 85%,transparent); backdrop-filter:blur(10px); border-bottom:1px solid var(--hair); }
+  nav.bar .row{ max-width:var(--wrap); margin:0 auto; padding:.65rem 7vw; display:flex; align-items:center; gap:1.5rem; }
+  .bm{ display:flex; align-items:center; gap:.55rem; text-decoration:none; color:var(--ink); }
+  .bm img{ height:30px; width:auto; }
+  .bm .tt{ font-family:var(--mincho); font-size:1.1rem; letter-spacing:.34em; }
+  nav.bar .links{ margin-left:auto; display:flex; gap:1.5rem; align-items:center; }
+  nav.bar a.lk{ color:var(--ink-soft); text-decoration:none; font-size:.8rem; letter-spacing:.16em; }
+  nav.bar a.lk:hover{ color:var(--ink); }
+  .btn{ font-family:var(--gothic); font-size:.8rem; letter-spacing:.2em; padding:.6rem 1.35rem; border:1px solid var(--navy); background:var(--navy); color:#fff; text-decoration:none; cursor:pointer; transition:.25s; display:inline-block; }
+  @media (prefers-color-scheme:dark){ .btn:not(.ghost){ color:#0f1013; } }
+  :root[data-theme="dark"] .btn:not(.ghost){ color:#0f1013; }
+  :root[data-theme="light"] .btn:not(.ghost){ color:#fff; }
+  .btn:hover{ filter:brightness(1.1); }
+  .btn.ghost{ background:transparent; color:var(--ink); border-color:var(--navy); }
+  .btn.ghost:hover{ background:var(--navy); color:#fff; filter:none; }
+  a:focus-visible,.btn:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+  @media (max-width:760px){ nav.bar a.lk{ display:none; } }
+
+  /* HERO — 全面写真 */
+  .hero{ position:relative; height:92svh; min-height:520px; overflow:hidden; }
+  .hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
+  .hero .scrim{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,12,16,.28) 0%, rgba(12,12,16,0) 30%, rgba(12,12,16,.12) 70%, rgba(12,12,16,.42) 100%); }
+  .hero .copy{ position:absolute; right:8vw; top:12%; color:#fff; text-shadow:0 2px 24px rgba(0,0,0,.4); }
+  .hero .copy .vtext{ font-size:clamp(1.5rem,4vw,2.5rem); line-height:2.4; letter-spacing:.32em; height:auto; }
+  .hero .foot{ position:absolute; left:8vw; bottom:8%; color:#fff; text-shadow:0 2px 20px rgba(0,0,0,.5); }
+  .hero .foot .en{ font-family:var(--latin); letter-spacing:.4em; text-transform:uppercase; font-size:.66rem; opacity:.9; }
+  .hero .foot .ja{ font-family:var(--mincho); font-size:1.05rem; letter-spacing:.14em; margin-top:.3rem; }
+  .scrollcue{ position:absolute; left:50%; bottom:3%; transform:translateX(-50%); color:#fff; font-family:var(--latin); font-size:.6rem; letter-spacing:.4em; text-transform:uppercase; opacity:.85; }
+  .scrollcue::after{ content:""; display:block; width:1px; height:38px; margin:10px auto 0; background:#fff; opacity:.7; }
+
+  /* 語りの帯 */
+  .creed{ text-align:center; padding:clamp(4rem,9vw,7rem) 0; }
+  .creed .lead{ font-family:var(--mincho); font-size:clamp(1.4rem,3.4vw,2rem); line-height:2.2; letter-spacing:.12em; max-width:34rem; margin:1rem auto 0; }
+  .creed .creed-sub{ font-family:var(--mincho); color:var(--ink-soft); font-size:clamp(1.05rem,2.4vw,1.35rem); letter-spacing:.16em; margin:1rem auto 0; }
+  .creed .marks{ display:flex; gap:2.4rem; justify-content:center; flex-wrap:wrap; margin-top:2.6rem; color:var(--ink-faint); font-size:.76rem; letter-spacing:.14em; }
+  .creed .marks span{ position:relative; padding-left:1.4rem; }
+  .creed .marks span::before{ content:""; position:absolute; left:0; top:.55em; width:.5rem; height:.5rem; border:1px solid var(--gold); border-radius:50%; }
+
+  section{ position:relative; }
+  .band{ padding:clamp(4rem,9vw,7.5rem) 0; }
+
+  /* editorial 2カラム（写真＝一幅の絵） */
+  .ed{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4.5rem); align-items:center; }
+  .ed.rev .art{ order:2; }
+  .art{ position:relative; }
+  .art img{ width:100%; height:auto; box-shadow:0 30px 60px -30px rgba(0,0,0,.35); }
+  .art img.cut{ box-shadow:none; filter:drop-shadow(0 20px 26px rgba(20,20,26,.22)); }
+  .gallery .gmain{ aspect-ratio:4/3; background:var(--paper-2); display:flex; align-items:center; justify-content:center; overflow:hidden; box-shadow:0 30px 60px -30px rgba(0,0,0,.35); }
+  .gallery .gmain img{ width:100%; height:100%; object-fit:contain; box-shadow:none; }
+  .gthumbs{ display:flex; gap:.55rem; margin-top:.7rem; flex-wrap:wrap; }
+  .gthumbs img{ width:60px; height:60px; object-fit:cover; cursor:pointer; border:1px solid var(--hair); opacity:.6; transition:.2s; box-shadow:none; }
+  .gthumbs img.on{ opacity:1; border-color:var(--navy); }
+  .gthumbs img:hover{ opacity:1; }
+  .art .cap{ position:absolute; top:1rem; left:-1rem; }
+  .art .cap .vtext{ font-size:1rem; letter-spacing:.28em; color:var(--ink-soft); background:var(--paper); padding:.6rem .2rem; }
+  .txt .eyebrow{ display:block; margin-bottom:.9rem; }
+  .txt h2{ font-size:clamp(1.7rem,3.8vw,2.4rem); line-height:1.5; }
+  .txt p.desc{ color:var(--ink-soft); margin:1.1rem 0 0; max-width:30rem; }
+  .price{ font-family:var(--gothic); font-weight:600; font-size:clamp(2rem,4.6vw,2.7rem); letter-spacing:.01em; font-variant-numeric:tabular-nums; margin:1.6rem 0 .2rem; }
+  .price .was{ font-family:var(--gothic); font-size:.9rem; color:var(--ink-faint); text-decoration:line-through; margin-right:.7rem; }
+  .price small{ font-family:var(--gothic); font-size:.85rem; color:var(--ink-faint); letter-spacing:.06em; margin-left:.5rem; }
+  .subnote{ color:var(--ink-soft); font-size:.85rem; margin:0 0 1.4rem; }
+  @media (max-width:800px){ .ed{ grid-template-columns:1fr; } .ed.rev .art{ order:0; } }
+
+  /* サイズ表＋寸法図 */
+  .sizewrap{ display:grid; grid-template-columns:1.4fr 1fr; gap:2rem; align-items:start; margin-top:1rem; }
+  table.size{ width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+  table.size th,table.size td{ text-align:left; padding:.5rem .4rem; border-top:1px solid var(--hair); font-weight:400; font-size:.82rem; }
+  table.size th{ font-family:var(--latin); text-transform:uppercase; font-size:.62rem; letter-spacing:.14em; color:var(--ink-faint); }
+  table.size td.n{ color:var(--ink-soft); }
+  .diagram{ border:1px solid var(--hair); padding:1rem; }
+  .diagram .dgm-ph{ aspect-ratio:4/3; display:grid; place-content:center; border:1px dashed var(--hair-2); color:var(--ink-faint); }
+  .diagram .dgm-ph .vtext{ font-size:1.05rem; color:var(--ink-faint); letter-spacing:.3em; }
+  .diagram svg{ width:100%; height:auto; color:var(--ink); display:block; }
+  .diagram svg .dim{ stroke:var(--gold); }
+  .diagram svg .dimt text{ fill:var(--gold); font-family:var(--latin); font-size:26px; font-weight:600; }
+  .diagram .lg{ font-size:.7rem; color:var(--ink-soft); letter-spacing:.08em; margin-top:.6rem; line-height:1.8; }
+  .diagram .lg b{ color:var(--gold); font-weight:400; font-family:var(--latin); margin-right:.35em; }
+  @media (max-width:560px){ .sizewrap{ grid-template-columns:1fr; } }
+
+  /* 全面写真の間（額装） */
+  .plate{ position:relative; height:82svh; min-height:440px; overflow:hidden; }
+  .plate img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .plate .line{ position:absolute; right:8vw; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; align-items:center; gap:1rem; }
+  .plate .line .vtext{ font-size:clamp(1.3rem,3.4vw,2rem); letter-spacing:.34em; color:#fff; text-shadow:0 2px 22px rgba(0,0,0,.5); height:auto; max-height:60svh; }
+  .plate .line .peng{ color:#fff; font-family:var(--latin); font-style:italic; font-size:.72rem; letter-spacing:.12em; text-shadow:0 2px 18px rgba(0,0,0,.6); opacity:.92; }
+  .plate .scrim{ position:absolute; inset:0; background:linear-gradient(90deg, rgba(0,0,0,.06), rgba(0,0,0,.28)); }
+
+  /* 用具（縦の一覧・棚っぽくしない） */
+  .kit{ display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:clamp(1.4rem,3vw,2.2rem); margin-top:2.6rem; }
+  @media (max-width:1000px){ .kit{ grid-template-columns:repeat(2,1fr); } }
+  .kititem .ph{ overflow:hidden; aspect-ratio:3/4; background:var(--paper-2); }
+  .kititem .ph img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s ease; }
+  .kititem.fit .ph{ background:var(--paper-2); }
+  .kititem.fit .ph img{ object-fit:contain; padding:9% 8%; }
+  .kititem:hover .ph img{ transform:scale(1.04); }
+  /* 全長を見せる横長ストリップ（白背景に浮かべる・商品ライトボックス） */
+  .longrow{ display:flex; flex-direction:column; gap:1.3rem; margin-top:2.2rem; }
+  .longitem{ background:#f6f6f3; border:1px solid rgba(20,20,26,.10); border-radius:4px; padding:1.2rem clamp(1rem,3vw,2.4rem) 1rem; }
+  .longitem .lph{ display:flex; align-items:center; justify-content:center; }
+  .longitem .lph img{ width:100%; height:auto; max-height:158px; object-fit:contain; filter:drop-shadow(0 7px 11px rgba(20,20,26,.22)); }
+  .longitem .lcap{ display:flex; justify-content:space-between; align-items:baseline; gap:.6rem 1.4rem; flex-wrap:wrap; margin-top:.85rem; padding-top:.85rem; border-top:1px solid rgba(20,20,26,.10); }
+  .longitem .lnm{ font-family:var(--mincho); font-size:1.05rem; letter-spacing:.06em; color:#16171c; }
+  .longitem .lds{ font-size:.78rem; color:#565b66; flex:1; min-width:12rem; }
+  .longitem .lpr{ font-family:var(--gothic); font-weight:600; font-size:1rem; color:#16171c; letter-spacing:.04em; font-variant-numeric:tabular-nums; }
+  .kititem .nm{ font-family:var(--mincho); font-size:1.1rem; letter-spacing:.06em; margin-top:.9rem; }
+  .kititem .ds{ font-size:.8rem; color:var(--ink-soft); margin-top:.2rem; }
+  .kititem .pr{ font-family:var(--gothic); font-weight:600; font-size:1rem; color:var(--ink); letter-spacing:.03em; font-variant-numeric:tabular-nums; margin-top:.45rem; }
+  .buy{ display:inline-block; margin-top:.7rem; font-family:var(--gothic); font-size:.72rem; letter-spacing:.16em; color:var(--navy); text-decoration:none; border-bottom:1px solid var(--hair-2); padding-bottom:2px; transition:.2s; }
+  .buy:hover{ border-color:var(--navy); }
+  .buy.soon{ color:#9a9ea9; border-color:transparent; cursor:default; letter-spacing:.14em; }
+  .longitem .buy{ margin-top:0; flex-basis:100%; }
+  .orderguide{ display:flex; flex-direction:column; gap:1.1rem; margin:2rem 0 0; max-width:40rem; }
+  .orderguide .og{ display:flex; gap:1rem; align-items:flex-start; }
+  .orderguide .ogn{ flex:none; width:1.9rem; height:1.9rem; border-radius:50%; border:1px solid var(--navy); color:var(--navy); font-family:var(--gothic); font-size:.85rem; display:flex; align-items:center; justify-content:center; }
+  .orderguide .og b{ font-family:var(--mincho); font-size:1.02rem; }
+  .orderguide .og p{ color:var(--ink-soft); font-size:.85rem; margin:.25rem 0 0; line-height:1.7; }
+  .orderguide .og a{ color:var(--navy); }
+  .shishu-cta{ display:flex; flex-wrap:wrap; align-items:center; gap:.9rem 1.4rem; justify-content:space-between; margin-top:1.3rem; padding:1rem 1.2rem; border:1px solid var(--hair-2); border-left:3px solid var(--navy); background:var(--paper-2); border-radius:4px; }
+  .shishu-cta b{ font-family:var(--mincho); font-size:1rem; letter-spacing:.04em; }
+  .shishu-cta p{ color:var(--ink-soft); font-size:.82rem; margin:.25rem 0 0; max-width:25rem; line-height:1.65; }
+  .shishu-cta .btn{ flex:none; }
+  @media (max-width:720px){ .kit{ grid-template-columns:1fr 1fr; } }
+
+  /* 観測記録（深い地） */
+  .obs{ background:var(--deep); color:var(--deep-ink); }
+  .obs .eyebrow{ color:var(--gold); }
+  .obs .band{ display:grid; grid-template-columns:1.1fr .9fr; gap:clamp(2rem,5vw,4rem); align-items:center; }
+  .obs h2{ color:var(--deep-ink); font-size:clamp(1.7rem,4vw,2.4rem); line-height:1.5; }
+  .obs .intro{ color:#b7bdca; max-width:30rem; margin:1.1rem 0 0; font-size:.96rem; }
+  .obs .art img{ box-shadow:0 30px 70px -30px rgba(0,0,0,.7); }
+  .kiroku dl{ display:grid; grid-template-columns:8rem 1fr; margin:2rem 0 0; }
+  .kiroku dt,.kiroku dd{ padding:.72rem .1rem; border-top:1px solid rgba(255,255,255,.13); margin:0; font-size:.9rem; }
+  .kiroku dt{ color:#8f95a4; letter-spacing:.12em; }
+  .kiroku dd{ color:var(--deep-ink); }
+  .kiroku .note{ margin-top:1.3rem; color:#7f8593; font-size:.76rem; letter-spacing:.08em; }
+  @media (max-width:800px){ .obs .band{ grid-template-columns:1fr; } .kiroku dl{ grid-template-columns:6.5rem 1fr; } }
+
+  /* 観測記録：新旧の対 */
+  .obs .pair{ display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .obs figure{ margin:0; }
+  .obs figure img{ width:100%; aspect-ratio:3/4; object-fit:cover; box-shadow:0 30px 70px -30px rgba(0,0,0,.7); }
+  .obs figcaption{ font-family:var(--latin); text-transform:uppercase; letter-spacing:.24em; font-size:.6rem; color:#8f95a4; margin-top:.7rem; text-align:center; }
+  .obs .newph{ aspect-ratio:3/4; border:1px dashed rgba(255,255,255,.26); display:grid; place-content:center; text-align:center; color:#7f8593; font-size:.82rem; letter-spacing:.12em; line-height:1.8; }
+  .obs .record{ font-family:var(--mincho); font-size:1.02rem; line-height:2.2; color:var(--deep-ink); margin:1.5rem 0 0; letter-spacing:.05em; }
+
+  /* 龍王について */
+  .about{ text-align:center; }
+  .about img.logo{ width:132px; height:auto; margin:0 auto 1.6rem; }
+  .about .yurai{ max-width:33rem; margin:0 auto; font-family:var(--mincho); font-size:1.02rem; line-height:2.4; color:var(--ink-soft); letter-spacing:.06em; }
+
+  /* 注文 */
+  .order{ background:var(--paper-2); }
+  .form{ max-width:38rem; margin-top:.5rem; }
+  .frow{ display:grid; grid-template-columns:1fr 1fr; gap:1.1rem; }
+  .field{ display:grid; gap:.4rem; margin-bottom:1.1rem; }
+  .field.full{ grid-column:1/-1; }
+  .field label{ font-size:.76rem; letter-spacing:.14em; color:var(--ink-soft); }
+  .field input,.field select,.field textarea{ font-family:var(--gothic); font-size:.95rem; color:var(--ink); background:var(--paper); border:1px solid var(--hair-2); padding:.7rem .8rem; }
+  .field textarea{ resize:vertical; }
+  .fnote{ margin-top:1.3rem; font-size:.82rem; color:var(--ink-soft); line-height:1.9; }
+  .fnote b{ color:var(--ink); font-weight:400; }
+  @media (max-width:600px){ .frow{ grid-template-columns:1fr; } }
+
+  footer.f{ background:var(--deep); color:#a7adba; padding:3.4rem 0; }
+  footer.f .row{ max-width:var(--wrap); margin:0 auto; padding:0 7vw; display:flex; justify-content:space-between; gap:1.4rem; flex-wrap:wrap; align-items:center; }
+  footer.f img{ height:40px; width:auto; }
+  footer.f a{ color:#a7adba; text-decoration:none; font-size:.76rem; letter-spacing:.12em; }
+  footer.f a:hover{ color:#fff; }
+  footer.f .en{ width:100%; font-family:var(--latin); font-style:italic; font-size:.78rem; color:#767c8b; border-top:1px solid rgba(255,255,255,.1); padding-top:1.3rem; margin-top:.4rem; }
+
+  .rise{ opacity:0; transform:translateY(20px); transition:opacity 1.1s ease,transform 1.1s ease; }
+  .rise.seen{ opacity:1; transform:none; }
+  @media (prefers-reduced-motion:reduce){ .rise{ opacity:1; transform:none; transition:none; } }
+
+  @media (max-width:560px){
+    .wrap{ padding:0 6vw; }
+    .hero{ height:84svh; }
+    .hero .copy{ right:7vw; top:9%; }
+    .hero .copy .vtext{ letter-spacing:.22em; height:auto; max-height:none; }
+    .band{ padding:clamp(3rem,11vw,5rem) 0; }
+    .plate{ height:70svh; }
+    .obs .pair{ gap:.6rem; }
+    .price{ font-size:2rem; }
+    nav.bar .row{ gap:.8rem; }
+    .bm .tt{ font-size:1rem; letter-spacing:.24em; }
+  }
+  .mock{ position:fixed; left:50%; bottom:12px; transform:translateX(-50%); z-index:50; font-size:.62rem; letter-spacing:.16em; color:var(--ink-faint); background:color-mix(in srgb,var(--paper) 84%,transparent); border:1px solid var(--hair); padding:.3rem .8rem; border-radius:2px; text-transform:uppercase; backdrop-filter:blur(4px); }
+</style>
+</head>
+<body>
+
+<div class="ryuoh" lang="ja">
+
+  <nav class="bar"><div class="row">
+    <a class="bm" href="#top"><img src="images/ryuuou_logo.png" alt="龍王 ロゴ"><span class="tt">龍王</span></a>
+    <div class="links">
+      <a class="lk" href="#dogi">道衣</a>
+      <a class="lk" href="#hakama">袴</a>
+      <a class="lk" href="#kit">用具</a>
+      <a class="lk" href="shishu.html" target="_blank" rel="noopener">刺繍</a>
+      <a class="lk" href="#obs">時間と品質</a>
+      <a class="lk" href="#about">龍王について</a>
+      <a class="btn" href="#order">ご注文</a>
+    </div>
+  </div></nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <img src="images/hero-spread.jpg" alt="畳の上に広げられた、一年以上使い込まれた白い合気道衣">
+    <div class="scrim"></div>
+    <div class="copy"><div class="vtext">身につける、<br>　　時を刻む…</div></div>
+    <div class="foot">
+      <div class="en">Aikido — RYU-OH</div>
+      <div class="ja">合氣道用具　龍王</div>
+    </div>
+    <div class="scrollcue">scroll</div>
+  </header>
+
+  <!-- 語り -->
+  <section class="creed"><div class="wrap rise">
+    <span class="eyebrow">A tool for the practice</span>
+    <p class="lead">稽古の跡が、残るもの。</p>
+    <p class="creed-sub">道具は、時間を映す。</p>
+    <p class="ensub" lang="en">What remains are the marks of practice. A tool reflects time.</p>
+    <div class="marks">
+      <span>合気会公認マーク付</span>
+      <span>綿100%</span>
+      <span>公式直販の価格</span>
+      <span>全国へ発送</span>
+    </div>
+  </div></section>
+
+  <!-- 道衣 -->
+  <section id="dogi" class="band"><div class="wrap">
+    <div class="ed">
+      <div class="art rise gallery">
+        <div class="gmain"><img id="dogi-main" src="images/dogi-g1.jpg" alt="龍王印 晒一重 合気道衣（折り姿）"></div>
+        <div class="gthumbs">
+          <img class="gt on" src="images/dogi-g1.jpg" alt="折り姿">
+          <img class="gt" src="images/dogi-g2.jpg" alt="上下セット">
+          <img class="gt" src="images/dogi-g3.jpg" alt="後ろ姿">
+          <img class="gt" src="images/dogi-g4.jpg" alt="上衣">
+          <img class="gt" src="images/dogi-g5.jpg" alt="ズボン">
+        </div>
+        <div class="cap"><span class="vtext">晒一重</span></div>
+      </div>
+      <div class="txt rise">
+        <span class="eyebrow">Keiko-gi — 道衣</span>
+        <h2>晒一重 合気道衣</h2>
+        <p class="ensub" lang="en">Bleached single-weave aikido gi (jacket, trousers &amp; white belt)</p>
+        <p class="desc">綿100%。上衣・ズボンのセット。背継ぎのない仕様で、受け身に障りのない背面。刺し子生地による耐久度と、一重で季節問わず使用できる基本の一着です。<span style="color:var(--ink-faint);">（合気会公認マーク付／縫製 海外）</span></p>
+        <div class="price">¥8,880<small>〜（上下セット・帯なし／税込）</small></div>
+        <p class="subnote">〜3号 ¥8,880／4〜6号 ¥9,870。白帯をつける場合 ＋¥660。公式直販の価格です。</p>
+
+        <div class="sizewrap">
+          <table class="size">
+            <thead><tr><th>号</th><th>身長</th><th>A着丈/B裄/Cズボン丈</th></tr></thead>
+            <tbody>
+              <tr><td>000</td><td class="n">100–120</td><td class="n">44/50/55</td></tr>
+              <tr><td>0</td><td class="n">130–140</td><td class="n">58/58/69</td></tr>
+              <tr><td>1</td><td class="n">140–150</td><td class="n">65/62/76</td></tr>
+              <tr><td>2</td><td class="n">150–160</td><td class="n">72/66/83</td></tr>
+              <tr><td>3</td><td class="n">160–170</td><td class="n">79/70/90</td></tr>
+              <tr><td>4</td><td class="n">170–180</td><td class="n">86/74/97</td></tr>
+              <tr><td>5</td><td class="n">180–190</td><td class="n">93/78/104</td></tr>
+              <tr><td>6</td><td class="n">190〜</td><td class="n">100/82/111</td></tr>
+            </tbody>
+          </table>
+          <div class="diagram" aria-label="寸法の測り方 A着丈 B裄丈 Cズボン丈">
+            <svg viewBox="-36 -24 424 528" role="img" aria-labelledby="dgt"><title id="dgt">合気道衣の寸法図（A着丈・B裄丈・Cズボン丈）</title>
+              <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" opacity="0.72">
+                <polygon points="373.914,75.611 281.895,82.53 264.599,103.286 268.749,229.206 109.619,229.897 113.771,103.978 97.166,84.605 4.455,75.611 4.455,27.872 161.509,20.953 173.271,7.116 205.098,7.116 213.4,20.953 373.914,27.872 "/>
+                <polyline points="173.295,8.583 186.312,76.514 178.99,105.395 161.509,20.953 "/>
+                <polyline points="203.791,8.311 148.479,227.883 161.927,231.67 213.4,20.953 "/>
+                <rect x="156.309" y="203.497" transform="matrix(-0.9716 -0.2366 0.2366 -0.9716 267.4042 448.0251)" width="8.541" height="8.948"/>
+                <rect x="153.545" y="214.538" transform="matrix(-0.9716 -0.2365 0.2365 -0.9716 259.3473 469.1387)" width="8.542" height="8.948"/>
+                <rect x="117" y="256.02" width="142" height="226"/>
+                <line x1="188" y1="331.02" x2="188" y2="482.02"/>
+                <line x1="117.5" y1="267.52" x2="258.5" y2="267.52" stroke-dasharray="3"/>
+              </g>
+              <g class="dim" fill="none" stroke-width="1.6">
+                <line x1="4.379" y1="3.941" x2="4.379" y2="232.539"/>
+                <line x1="0" y1="7.883" x2="188.309" y2="7.883"/><line x1="188.309" y1="0" x2="188.309" y2="12.262"/>
+                <line x1="4.379" y1="252.941" x2="4.379" y2="486.539"/>
+                <line x1="0" y1="229.474" x2="107.73" y2="229.474" stroke-dasharray="3"/>
+                <line x1="0" y1="255.883" x2="188.309" y2="255.883" stroke-dasharray="3"/>
+                <line x1="0" y1="481.474" x2="154.143" y2="481.474" stroke-dasharray="3"/>
+              </g>
+              <g class="dimt"><text x="-30" y="126">A</text><text x="84" y="-6">B</text><text x="-30" y="378">C</text></g>
+            </svg>
+            <p class="lg"><b>A</b> 着丈　<b>B</b> 裄丈　<b>C</b> ズボン丈（cm）</p>
+          </div>
+        </div>
+        <p style="margin-top:1.6rem;"><a class="btn" href="https://ryu-oh.stores.jp/items/6a87dc4ba078915f978a50f0" target="_blank" rel="noopener">STORESで注文</a></p>
+        <div class="shishu-cta rise">
+          <div><b>刺繍・名入れ（オプション）</b><p>襟端にお名前を刺繍できます。配置・書体・糸色を画面で確認しながらご指定いただけます。</p></div>
+          <a class="btn ghost" href="shishu.html?item=gi" target="_blank" rel="noopener">刺繍を確認・指定する ›</a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 額装の間：木刀 -->
+  <section class="plate">
+    <img src="images/bokutou02.jpg" alt="畳の上に置かれた一振りの木刀">
+    <div class="scrim"></div>
+    <div class="line"><div class="vtext">間合いを知る。</div><div class="peng" lang="en">Knowing the distance · ma-ai</div></div>
+  </section>
+
+  <!-- 袴 -->
+  <section id="hakama" class="band"><div class="wrap">
+    <div class="ed rev">
+      <div class="art rise"><img src="images/hakama-tuujyou-crop.jpg" alt="畳まれた黒の合気道袴"><div class="cap"><span class="vtext">合氣道袴</span></div></div>
+      <div class="txt rise">
+        <span class="eyebrow">Hakama — 袴</span>
+        <h2>合気道袴 — 黒</h2>
+        <p class="ensub" lang="en">Aikido hakama — black</p>
+        <p class="desc">ポリエステル65%・レーヨン35%。22〜28号。折り目が保たれ、稽古を重ねても崩れにくい仕立て。合気会公認マーク付。夏には、吸汗速乾・防透・日本製生地のストレッチ袴も。</p>
+        <p class="subnote" style="margin-top:1.4rem;">黒 — 22〜24号 ¥6,540／25〜26号 ¥7,000／27〜28号 ¥7,770（税込）。夏用ストレッチ袴は ¥9,000。</p>
+        <div style="overflow-x:auto; margin-top:1.2rem;">
+          <table class="size">
+            <thead><tr><th>号</th><th>袴丈(cm)</th><th>価格（税込）</th></tr></thead>
+            <tbody>
+              <tr><td>22</td><td class="n">83</td><td class="n">¥6,540</td></tr>
+              <tr><td>23</td><td class="n">87</td><td class="n">¥6,540</td></tr>
+              <tr><td>24</td><td class="n">91</td><td class="n">¥6,540</td></tr>
+              <tr><td>25</td><td class="n">95</td><td class="n">¥7,000</td></tr>
+              <tr><td>26</td><td class="n">99</td><td class="n">¥7,000</td></tr>
+              <tr><td>27</td><td class="n">102</td><td class="n">¥7,770</td></tr>
+              <tr><td>28</td><td class="n">106</td><td class="n">¥7,770</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="subnote" style="margin-top:.7rem; font-size:.76rem; color:var(--ink-faint);">※袴丈は、後ろ側の紐下から裾までの長さです。夏用ストレッチ袴（23〜28号）も同寸法です。</p>
+        <p style="margin-top:1.2rem; display:flex; gap:.7rem; flex-wrap:wrap;">
+          <a class="btn" href="https://ryu-oh.stores.jp/items/6a87fafafc29e80bfd45efc4" target="_blank" rel="noopener">STORESで注文</a>
+        </p>
+        <div class="shishu-cta rise">
+          <div><b>刺繍・名入れ（オプション）</b><p>袴にお名前を刺繍できます。配置・書体・糸色を画面で確認しながらご指定いただけます。</p></div>
+          <a class="btn ghost" href="shishu.html?item=hakama" target="_blank" rel="noopener">刺繍を確認・指定する ›</a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 用具 -->
+  <section id="kit" class="band" style="background:var(--paper-2);"><div class="wrap">
+    <div class="rise" style="text-align:center;">
+      <span class="eyebrow">The tools of keiko</span>
+      <h2 style="font-size:clamp(1.7rem,4vw,2.3rem); margin-top:.6rem;">道着から、武器・袋まで。</h2>
+      <p style="color:var(--ink-soft); max-width:34rem; margin:.9rem auto 0;">稽古に必要なものを、龍王の名のもとに一つずつ。</p>
+      <p class="ensub" lang="en" style="margin-top:.6rem;">From gi to weapons and cases — one by one, under the name RYU-OH.</p>
+    </div>
+    <div class="kit">
+      <div class="kititem rise"><div class="ph"><img src="images/hakama-nathu.jpg" alt="夏用のストレッチ合気道袴"></div><div class="nm">夏用ストレッチ袴</div><div class="ds">スプリンジー®・制菌加工。日本製生地。</div><div class="pr">¥9,000</div><span class="buy soon">準備中</span></div>
+      <div class="kititem rise"><div class="ph"><img src="images/obi-usute.jpg" alt="龍王印の袴下薄手帯（薄さのわかる端）" style="object-position:center bottom;"></div><div class="nm">袴下薄手帯</div><div class="ds">袴下用の薄手。帯厚を抑え、稽古時のかさ張りを軽減。※刺繍は見本です。</div><div class="pr">¥1,230</div><a class="buy" href="https://ryu-oh.stores.jp/items/6a880a7f6a8b0d0528af73fa" target="_blank" rel="noopener">STORESで注文</a></div>
+      <div class="kititem rise"><div class="ph"><img src="images/jyou-c.jpg" alt="赤樫の杖（棒）" style="object-position:center bottom;"></div><div class="nm">杖（棒）</div><div class="ds">赤樫。4.2尺。</div><div class="pr">¥2,340</div><a class="buy" href="https://ryu-oh.stores.jp/items/6a87ffc149abed0610f674b6" target="_blank" rel="noopener">STORESで注文</a></div>
+      <div class="kititem rise"><div class="ph"><img src="images/tantou-fit2.jpg" alt="欅の短刀"></div><div class="nm">短刀</div><div class="ds">欅（軽い）。取り・投げの稽古に。</div><div class="pr">¥990</div><a class="buy" href="https://ryu-oh.stores.jp/items/6a8808026cfe5311bc19aa7a" target="_blank" rel="noopener">STORESで注文</a></div>
+    </div>
+
+    <div class="longrow">
+      <div class="longitem rise"><div class="lph"><img src="images/keyaki-cut.png" alt="欅の合気道用木刀（全長）"></div><div class="lcap"><span class="lnm">合氣道用木刀 — 欅</span><span class="lds">軽く、しなやかな欅。素振り・組太刀に。</span><span class="lpr">¥2,980</span><a class="buy" href="https://ryu-oh.stores.jp/items/6a8801ca3e0c0611449a3b24" target="_blank" rel="noopener">STORESで注文</a></div></div>
+      <div class="longitem rise"><div class="lph"><img src="images/kashi-cut.png" alt="赤樫の通常木刀（全長）"></div><div class="lcap"><span class="lnm">通常木刀 — 赤樫</span><span class="lds">通常形状。堅く重みのある赤樫。</span><span class="lpr">¥3,330</span><a class="buy" href="https://ryu-oh.stores.jp/items/6a8808cc401c311785ceff07" target="_blank" rel="noopener">STORESで注文</a></div></div>
+      <div class="longitem rise"><div class="lph"><img src="images/bag-cut.png" alt="木刀・杖・短刀の三点を収納できるトンボ柄の肩掛け袋"></div><div class="lcap"><span class="lnm">肩掛け袋 — 三点収納</span><span class="lds">木刀・杖・短刀をまとめて。トンボ柄・帆布・肩掛けベルト付き。</span><span class="lpr">¥2,670</span><a class="buy" href="https://ryu-oh.stores.jp/items/6a88043c6396ba0aad7be1df" target="_blank" rel="noopener">STORESで注文</a></div></div>
+    </div>
+  </div></section>
+
+  <!-- 観測記録 -->
+  <section id="obs" class="obs"><div class="wrap band">
+    <div class="art rise">
+      <div class="pair">
+        <figure><img src="images/dougi-eri.jpg" alt="新品の合気道衣の襟（龍王・合気会の織りネーム）"><figcaption>新品</figcaption></figure>
+        <figure><img src="images/dogi-label-vert.jpg" alt="一年以上、稽古で使い込まれた合気道衣の襟"><figcaption>一年以上</figcaption></figure>
+      </div>
+    </div>
+    <div class="txt rise">
+      <span class="eyebrow">Observation — 時間と品質</span>
+      <h2>時間が、物語る。</h2>
+      <p class="ensub" lang="en" style="color:#8f95a4;">Time tells the story.</p>
+      <p class="intro">新品と、一年以上着用したもの。</p>
+      <p class="record">洗濯は、石鹸洗剤のみ、洗濯ネットにも入れず<br>漂白も不使用。<br><br>週二回の稽古に着回した。</p>
+      <p class="note" style="color:#7f8593; font-size:.76rem; letter-spacing:.08em; margin-top:1.3rem;">— 記録のみ。良し悪しは書きません。読む人が判断します。</p>
+    </div>
+  </div></section>
+
+  <!-- 龍王について -->
+  <section id="about" class="band"><div class="wrap about rise">
+    <img class="logo" src="images/ryuuou_logo.png" alt="龍王 ロゴ（金の龍・紺地）">
+    <p class="yurai">合氣道の守護神は「天の村雲九鬼さむはら龍王」。<br>着用する稽古者を守護する想いを込めて、<br>万有愛護する龍の王を象りました。<br>——道を守る者が、道に守られるように。</p>
+  </div></section>
+
+  <!-- 注文 -->
+  <section id="order" class="order"><div class="wrap band">
+    <div class="rise">
+      <span class="eyebrow">Order — ご注文</span>
+      <h2 style="font-size:clamp(1.7rem,4vw,2.3rem); margin-top:.6rem;">あなたの、はじめの一着を。</h2>
+      <p class="ensub" lang="en">Your first gi.</p>
+      <p style="color:var(--ink-soft); margin:.8rem 0 0; max-width:34rem;">ご注文は各商品の「STORESで注文」ボタンから、STORESネットショップで承ります。お支払い・配送もSTORES上で完結します。</p>
+    </div>
+    <div class="orderguide rise">
+      <div class="og"><span class="ogn">1</span><div><b>商品を選ぶ</b><p>各セクションの「STORESで注文」から、STORESの商品ページへ進みます。</p></div></div>
+      <div class="og"><span class="ogn">2</span><div><b>刺繍（名入れ）をご希望の方</b><p><a href="shishu.html" target="_blank" rel="noopener">刺繍を指定する</a>で内容を決め、「この内容で注文へ進む」を押すとご指定内容がコピーされます。STORESの<b>刺繍オプション</b>を購入し、購入手続きの<b>備考欄に貼り付け（ご記入）</b>ください。指示書はPDFでも保存できます。</p></div></div>
+      <div class="og"><span class="ogn">3</span><div><b>お支払い・発送</b><p>STORES上でお支払いいただきます。ご注文確認ののち、10日以内に発送します。</p></div></div>
+    </div>
+    <p style="margin-top:1.8rem;"><a class="btn" href="https://ryu-oh.stores.jp/" target="_blank" rel="noopener">STORESネットショップを見る</a></p>
+    <p class="fnote">
+      送料：基本 ¥1,500（〜160サイズ）。北海道・沖縄は ＋¥1,000。<br>
+      <a href="https://ryu-oh.stores.jp/" target="_blank" rel="noopener">特定商取引法に基づく表記（STORES）</a>　／　お問い合わせ：ryuou.aiki@gmail.com
+    </p>
+  </div></section>
+
+  <footer class="f"><div class="row">
+    <img src="images/ryuuou_logo.png" alt="龍王 ロゴ">
+    <div style="display:flex; gap:1.3rem; flex-wrap:wrap;">
+      <a href="#dogi">道衣</a><a href="#hakama">袴</a><a href="#kit">用具</a><a href="#obs">時間と品質</a><a href="#about">龍王について</a><a href="#order">ご注文</a><a href="https://ryu-oh.stores.jp/" target="_blank" rel="noopener">特商法表記</a>
+    </div>
+    <div class="en">A brand is not a collection of products. It is a place where people encounter a Way.　—　合氣道用具 龍王</div>
+  </div></footer>
+
+</div>
+
+<script>
+  (function(){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('seen');io.unobserve(e.target);}});},{threshold:.12});
+    document.querySelectorAll('.rise').forEach(function(el){io.observe(el);});
+    document.querySelectorAll('.gthumbs img').forEach(function(t){
+      t.addEventListener('click',function(){
+        var m=document.getElementById('dogi-main'); if(m){ m.src=t.currentSrc||t.src; }
+        var sibs=t.parentNode.querySelectorAll('img'); for(var i=0;i<sibs.length;i++){ sibs[i].classList.remove('on'); }
+        t.classList.add('on');
+      });
+    });
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="龍王の道着・袴への刺繍を、配置と書体を確認しながらご指定いただけます。">
+<title>龍王 刺繍のご指定</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Yuji+Mai&display=swap');
+  :root{
+    --paper:#fbfbfa; --card:#fff; --line:rgba(20,20,26,.14); --line2:rgba(20,20,26,.26);
+    --ink:#15161a; --soft:#565b66; --faint:#8a8f9a;
+    --navy:#1f2a6e; --gold:#a97c3c;
+    --mincho:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"MS PMincho",serif;
+    --gothic:"Hiragino Kaku Gothic ProN","Yu Gothic UI","Yu Gothic","Meiryo",system-ui,sans-serif;
+    --latin:"Optima","Palatino Linotype",Georgia,serif;
+  }
+  @media (prefers-color-scheme:dark){ :root{ --paper:#0f1013; --card:#15171c; --line:rgba(238,240,244,.14); --line2:rgba(238,240,244,.28); --ink:#eef0f4; --soft:#aeb4c0; --faint:#71757f; --navy:#9aa3d9; --gold:#cfa25c; } }
+  *{ box-sizing:border-box; }
+  .app{ background:var(--paper); color:var(--ink); font-family:var(--gothic); line-height:1.7; -webkit-font-smoothing:antialiased; padding-bottom:4rem; overflow-x:hidden; }
+  .app img{ display:block; max-width:100%; }
+  .wrap{ max-width:66rem; margin:0 auto; padding:0 5vw; }
+
+  header.top{ border-bottom:1px solid var(--line); }
+  header.top .row{ max-width:66rem; margin:0 auto; padding:.9rem 5vw; display:flex; align-items:center; gap:.7rem; }
+  header.top img{ height:34px; }
+  header.top .t{ font-family:var(--mincho); letter-spacing:.28em; font-size:1.1rem; }
+  header.top .t small{ display:block; font-family:var(--latin); letter-spacing:.24em; font-size:.58rem; color:var(--gold); text-transform:uppercase; }
+
+  .intro{ padding:2rem 0 1rem; }
+  .intro h1{ font-family:var(--mincho); font-weight:400; font-size:clamp(1.4rem,3.4vw,1.9rem); letter-spacing:.05em; margin:0; }
+  .intro p{ color:var(--soft); margin:.6rem 0 0; font-size:.9rem; max-width:40rem; }
+
+  .grid{ display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start; margin-top:1.4rem; }
+  @media (max-width:800px){
+    .grid{ grid-template-columns:1fr; }
+    .preview{ order:-1; position:sticky; top:0; z-index:5; background:var(--paper); padding-bottom:.5rem; box-shadow:0 8px 12px -10px rgba(0,0,0,.35); }
+    .stage{ min-height:auto; padding:.9rem; }
+    .stage svg{ max-height:34vh; }
+    .cap{ display:none; }
+  }
+
+  .panel{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:1.4rem 1.4rem 1.6rem; }
+  .fld{ margin-bottom:1.15rem; }
+  .fld > label{ display:block; font-size:.78rem; letter-spacing:.1em; color:var(--soft); margin-bottom:.4rem; }
+  .fld select, .fld input[type=text]{ width:100%; font-family:var(--gothic); font-size:.95rem; color:var(--ink); background:var(--paper); border:1px solid var(--line2); border-radius:5px; padding:.6rem .7rem; }
+  .fld .hint{ font-size:.72rem; color:var(--faint); margin-top:.3rem; }
+  .chk{ display:flex; align-items:center; gap:.5rem; cursor:pointer; font-size:.88rem; color:var(--ink); }
+  .chk input{ width:16px; height:16px; }
+  .posfixed{ font-family:var(--mincho); font-size:1.02rem; letter-spacing:.06em; color:var(--ink); background:var(--paper); border:1px solid var(--line); border-radius:5px; padding:.55rem .75rem; }
+  .swatch-wrap{ display:flex; gap:.8rem; align-items:center; flex-wrap:wrap; }
+  .swatches{ flex:1 1 220px; display:grid; grid-template-columns:repeat(8,1fr); gap:.35rem; }
+  .sw{ width:100%; aspect-ratio:1; border-radius:50%; border:1px solid var(--line2); cursor:pointer; }
+  .metallic{ display:flex; align-items:center; gap:.5rem; border-left:1px solid var(--line); padding-left:.7rem; }
+  .metallic .ml-label{ font-size:.6rem; color:var(--gold); text-align:center; letter-spacing:.04em; line-height:1.35; }
+  .metallic .ml-label small{ display:block; color:var(--faint); }
+  #c-metal{ display:flex; flex-direction:column; gap:.45rem; }
+  #c-metal .sw{ width:28px; }
+  .sw[aria-pressed=true]{ outline:2px solid var(--navy); outline-offset:2px; }
+  .sw-name{ font-size:.78rem; color:var(--soft); margin-top:.4rem; letter-spacing:.06em; }
+  .threadref{ margin-top:.8rem; }
+  .threadref img{ width:100%; border:1px solid var(--line); border-radius:6px; }
+  .threadref .cap{ font-size:.7rem; color:var(--faint); margin-top:.35rem; letter-spacing:.06em; }
+
+  .preview{ position:sticky; top:1rem; }
+  .stage{ position:relative; background:linear-gradient(160deg,#f6f6f4,#eceae5); border:1px solid var(--line); border-radius:8px; padding:1.4rem; display:flex; align-items:center; justify-content:center; min-height:22rem; }
+  @media (prefers-color-scheme:dark){ .stage{ background:linear-gradient(160deg,#20232b,#15171c); } }
+  .stage svg{ width:100%; height:auto; max-height:60vh; }
+  .pstage{ position:relative; width:100%; max-width:300px; margin:0 auto; container-type:inline-size; }
+  .pstage img{ width:100%; height:auto; max-height:60vh; object-fit:contain; display:block; border-radius:4px; }
+  .pstitch{ position:absolute; left:53%; bottom:43%; transform:translateX(-50%); writing-mode:vertical-rl; text-orientation:upright; font-weight:600; letter-spacing:0.06em; word-spacing:-0.5em; line-height:1.05; white-space:nowrap; font-size:12cqw; text-shadow:0 0 1px rgba(31,42,110,.3); font-family:'Klee One',serif; pointer-events:none; }
+  .cap{ text-align:center; font-size:.72rem; color:var(--faint); margin-top:.6rem; letter-spacing:.08em; }
+
+  .sheet{ margin-top:2rem; background:var(--card); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .sheet .sh-head{ display:flex; align-items:center; gap:.6rem; padding:1rem 1.3rem; border-bottom:1px solid var(--line); }
+  .sheet .sh-head img{ height:26px; }
+  .sheet .sh-head b{ font-family:var(--mincho); letter-spacing:.14em; font-weight:400; }
+  .sheet .sh-head .no{ margin-left:auto; font-family:var(--latin); font-size:.72rem; color:var(--faint); letter-spacing:.1em; }
+  .sheet .sh-body{ display:grid; grid-template-columns:1.2fr 1fr; gap:1.4rem; padding:1.3rem; align-items:start; }
+  @media (max-width:640px){ .sheet .sh-body{ grid-template-columns:1fr; } }
+  table.spec{ width:100%; border-collapse:collapse; table-layout:fixed; }
+  table.spec th,table.spec td{ text-align:left; padding:.5rem .3rem; border-top:1px solid var(--line); font-size:.88rem; font-weight:400; vertical-align:top; word-break:break-word; }
+  table.spec th{ color:var(--soft); width:6rem; letter-spacing:.04em; }
+  table.spec tr.total th,table.spec tr.total td{ font-family:var(--gothic); font-weight:600; font-size:1.05rem; color:var(--ink); border-top:2px solid var(--line2); font-variant-numeric:tabular-nums; }
+  td.price{ font-variant-numeric:tabular-nums; }
+  .sh-preview{ background:#f2f1ee; border:1px solid var(--line); border-radius:6px; padding:.8rem; display:flex; align-items:center; justify-content:center; }
+  @media (prefers-color-scheme:dark){ .sh-preview{ background:#20232b; } }
+  .sh-preview svg{ width:100%; height:auto; max-height:16rem; }
+  .sh-preview .pstage{ max-width:150px; }
+  .sh-preview .pstage img{ max-height:14rem; }
+  .actions{ display:flex; gap:.7rem; flex-wrap:wrap; padding:0 1.3rem 1.4rem; }
+  .btn{ font-family:var(--gothic); font-size:.86rem; letter-spacing:.12em; padding:.75rem 1.5rem; border-radius:5px; cursor:pointer; border:1px solid var(--navy); }
+  .btn.pri{ background:var(--navy); color:#fff; }
+  .btn.ghost{ background:transparent; color:var(--ink); border-color:var(--line2); }
+  .note{ font-size:.74rem; color:var(--faint); padding:0 1.3rem 1.2rem; line-height:1.8; }
+
+  .mock{ position:fixed; left:50%; bottom:12px; transform:translateX(-50%); z-index:40; font-size:.62rem; letter-spacing:.14em; color:var(--faint); background:color-mix(in srgb,var(--paper) 84%,transparent); border:1px solid var(--line); padding:.3rem .8rem; border-radius:2px; }
+
+  @media print{
+    .app{ background:#fff; color:#000; padding:0; }
+    header.top,.intro,.grid,.mock,.actions,.cap{ display:none !important; }
+    .sheet{ border:none; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app" lang="ja">
+  <header class="top"><div class="row">
+    <img src="images/ryuuou_logo.png" alt="龍王"><div class="t">龍王<small>Embroidery order</small></div>
+  </div></header>
+
+  <div class="wrap">
+    <div class="intro">
+      <h1>刺繍のご指定</h1>
+      <p>お名前を刺繍でお入れできます。品目・サイズ・文字・書体・糸色を選ぶと、右のプレビューに反映され、下の「指示書」に商品と刺繍を合わせた金額が表示されます。</p>
+    </div>
+
+    <div class="grid">
+      <div class="panel">
+        <div class="fld">
+          <label for="c-item">品目（道着 ／ 袴 を切り替え）</label>
+          <select id="c-item"><option value="gi">合気道衣（上衣・上下セット）</option><option value="hakama">合気道袴 — 黒</option></select>
+          <div class="hint">▼ ここで道着と袴を切り替えられます。</div>
+        </div>
+        <div class="fld">
+          <label for="c-size">サイズ</label>
+          <select id="c-size"></select>
+        </div>
+        <div class="fld">
+          <label>刺繍の位置</label>
+          <div class="posfixed" id="c-pos-label">襟下（ロゴマーク上）</div>
+          <div class="hint">位置は品目ごとに決まっています（縦書き）。</div>
+        </div>
+        <div class="fld">
+          <label>糸色（並びは実際の糸見本と同じ）</label>
+          <div class="swatch-wrap">
+            <div class="swatches" id="c-colors"></div>
+            <div class="metallic">
+              <div class="ml-label">金・銀<br><small>別料金<br>2割増</small></div>
+              <div id="c-metal"></div>
+            </div>
+          </div>
+          <div class="sw-name" id="c-colorname">— 白（No.33）</div>
+          <div class="threadref">
+            <img src="images/shisyuito.jpg" alt="実際の刺繍糸の色見本（写真）">
+            <div class="cap">実際の糸色（写真）。画面の丸見本は近似のため、色はこの写真も参考にしてください。</div>
+          </div>
+        </div>
+        <div class="fld">
+          <label for="c-text">刺繍する文字（お名前・目安3文字）</label>
+          <input id="c-text" type="text" maxlength="8" value="合氣 龍王" placeholder="例：山田">
+          <div class="hint">3文字まで基本料金。4文字目から1字ごとに加算されます。</div>
+        </div>
+        <div class="fld">
+          <label for="c-font">書体</label>
+          <select id="c-font"><option value="kaisho">楷書体</option><option value="gyosho">行書体</option></select>
+          <div class="hint">楷書体・行書体からお選びください（どちらもサテン刺繍・追加料金なし）。</div>
+        </div>
+        <div class="fld">
+          <label>書体の見本（実物・参考）</label>
+          <img src="images/obi-moji.jpg" alt="行書体（天之叢雲九鬼さむはら龍王）と楷書体（合氣道）の刺繍見本" style="width:120px;border:1px solid var(--line);border-radius:5px;">
+          <div class="hint">左＝行書体（天之叢雲…龍王）／右＝楷書体（合氣道）の例。</div>
+        </div>
+      </div>
+
+      <div class="preview">
+        <div class="stage" id="stage">
+          <div id="photo-gi" class="pstage">
+            <img src="images/dougi-eri-str.jpg" alt="道着の襟（ロゴマークの上に刺繍）">
+            <span class="pstitch" id="tx-gi">合氣 龍王</span>
+          </div>
+
+          <svg id="svg-hakama" viewBox="0 0 227.539 245.495" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="display:none">
+            <polygon fill="#1c1c1c" stroke="#6a6a6a" stroke-width="1.1" stroke-dasharray="2" points="173.412,32.906 56.016,32.906 68.252,0.5 160.479,0.5 "/>
+            <polygon fill="#1c1c1c" stroke="#6a6a6a" stroke-width="1.1" points="215.314,121.2 226.989,244.995 0.572,244.995 17.235,121.354 54.757,32.906 173.412,32.906 "/>
+            <rect x="14.251" y="32.823" fill="#2b2b2b" stroke="#8a8a8a" stroke-width="0.6" width="203.294" height="11.069"/>
+            <line stroke="#7a7a7a" stroke-width="0.75" x1="63.959" y1="11.838" x2="86.796" y2="43.73"/>
+            <line stroke="#7a7a7a" stroke-width="0.75" x1="165.609" y1="12.933" x2="142.224" y2="44.825"/>
+            <line stroke="#666" stroke-width="0.9" x1="116.351" y1="45.472" x2="116.351" y2="244.044"/>
+            <polyline fill="none" stroke="#666" stroke-width="0.75" points="162.921,44.825 155.161,63.583 215.314,134.086 "/>
+            <polyline fill="none" stroke="#666" stroke-width="0.75" points="69.133,44.825 76.895,63.583 16.742,134.086 "/>
+            <text id="tx-hakama" x="170" y="88" font-size="12" fill="#f5f5f2" style="writing-mode:vertical-rl;text-orientation:upright;letter-spacing:1px;word-spacing:-0.65em;font-family:'Hiragino Mincho ProN','Yu Mincho',serif">合氣 龍王</text>
+          </svg>
+        </div>
+        <div class="cap">プレビュー（イメージ）— 位置は目安です</div>
+      </div>
+    </div>
+
+    <div class="sheet" id="sheet">
+      <div class="sh-head">
+        <img src="images/ryuuou_logo.png" alt="龍王"><b>刺繍 指示書 ／ お見積り</b><span class="no">RYU-OH / 龍王</span>
+      </div>
+      <div class="sh-body">
+        <table class="spec">
+          <tr><th>品目</th><td id="s-item">合気道衣（上衣）</td></tr>
+          <tr><th>サイズ</th><td id="s-size2">3号</td></tr>
+          <tr><th>位置</th><td id="s-pos">襟下（ロゴマーク上）</td></tr>
+          <tr><th>文字</th><td id="s-text">合氣 龍王</td></tr>
+          <tr><th>向き</th><td>縦書き</td></tr>
+          <tr><th>書体</th><td id="s-font">楷書体</td></tr>
+          <tr><th>糸色</th><td id="s-color"><span id="s-color-dot" style="display:inline-block;width:12px;height:12px;border-radius:50%;border:1px solid #999;vertical-align:middle;margin-right:.4em;"></span><span id="s-color-name">白（No.33）</span></td></tr>
+          <tr><th>商品価格</th><td class="price" id="s-pprice">¥8,880</td></tr>
+          <tr><th>刺繍料金</th><td class="price" id="s-eprice">¥770</td></tr>
+          <tr class="total"><th>合計（税込）</th><td class="price" id="s-total">¥9,650</td></tr>
+        </table>
+        <div class="sh-preview" id="sh-preview"></div>
+      </div>
+      <p style="font-size:.85rem; color:var(--ink); background:#f5f5f3; border-left:3px solid var(--navy); padding:.7rem .9rem; border-radius:3px; margin:0 0 1rem; line-height:1.75;">
+        <b>ご注文は2ステップです。</b><br>① 道着（本体）をSTORESでご注文 → ② 「刺繍オプション」をSTORESでご注文し、購入手続きの<b>備考欄に下記のコピー内容を貼り付け</b>。
+      </p>
+      <div class="actions">
+        <button class="btn pri" id="btn-copy">備考欄用にコピー</button>
+        <a class="btn ghost" id="btn-store" href="https://ryu-oh.stores.jp/items/6a893fb7508a1029c40a33ae" target="_blank" rel="noopener">刺繍オプションを注文（STORES）›</a>
+        <button class="btn ghost" id="btn-print">印刷 / PDFで保存</button>
+      </div>
+      <p class="note">
+        金額は目安です（送料別）。刺繍料金はヒロヤ基準の暫定：基本 ¥660（3文字まで）＋4文字目から1字 ¥110。金・銀糸は2割増。<br>
+        「備考欄用にコピー」でご指定内容をコピーし、「刺繍オプションを注文」から進んで、STORESの「備考」欄に貼り付けてください。道着（本体）は別途ご注文が必要です。「印刷 / PDFで保存」で指示書をA4保存もできます。
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var POSLABEL={ gi:"襟下 — ロゴ上端から約2cm上・文字末尾を揃える", hakama:"腰板の右下（背面）" };
+  var COLORS=[
+    ["赤","#c32026",1],["エンジ","#7c2230",3],["金茶","#a9772f",5],["山吹","#e6a72d",6],
+    ["黄","#ecc531",7],["若草","#9cc95f",10],["黄緑","#79b23e",11],["緑","#2e8b4f",12],
+    ["水色","#86c9e6",13],["天色","#4aa3d6",14],["青","#2f5fb0",16],["紺","#21306e",18],
+    ["紫紺","#34276a",20],["藤","#9f95d6",21],["紫","#6b3fa0",22],["江戸紫","#6f4e93",23],
+    ["ピンク","#e88fb2",24],["桃","#e56a8e",25],["桜","#f2c0cd",26],["白","#f5f5f2",33],
+    ["こげ茶","#46311f",30],["銀鼠","#b9bdc2",34],["鋼","#63676e",35],["黒","#191919",36],
+    ["金","#c8a43a",37],["銀","#c9cdd3",38]
+  ];
+  var IDX={}; COLORS.forEach(function(c,i){ IDX[c[2]]=i; });
+  var DEFCOLOR={ gi:IDX[18], hakama:IDX[33] };
+  var FONTS={ kaisho:"'Klee One','Hiragino Mincho ProN',serif", gyosho:"'Yuji Mai','Hiragino Mincho ProN',cursive" };
+  var SIZES={ gi:["000号","00号","0号","1号","2号","3号","4号","5号","6号"], hakama:["22号","23号","24号","25号","26号","27号","28号"] };
+  var ITEMNAME={ gi:"合気道衣（上衣・上下セット）", hakama:"合気道袴 — 黒" };
+  function giPrice(i){ return i<=5 ? 8880 : 9870; }               // 000〜3号=8880 / 4〜6号=9870
+  function hakamaPrice(i){ return i<=2 ? 6540 : (i<=4 ? 7000 : 7770); } // 22-24 / 25-26 / 27-28
+  function yen(n){ return "¥"+Number(n).toLocaleString("ja-JP"); }
+
+  var st={item:"gi",text:"合氣 龍王",font:"kaisho",color:DEFCOLOR.gi,colorTouched:false,size:5,obi:false};
+  var el=function(id){return document.getElementById(id);};
+
+  var cc=el("c-colors"), cm=el("c-metal");
+  COLORS.forEach(function(c,i){
+    var metal=(c[2]===37||c[2]===38);
+    var b=document.createElement("button"); b.className="sw"; b.style.background=c[1]; b.dataset.idx=i;
+    b.title=c[0]+"（No."+c[2]+"）"+(metal?" 別料金":"");
+    b.addEventListener("click",function(){ st.color=i; st.colorTouched=true; render(); });
+    (metal?cm:cc).appendChild(b);
+  });
+  function fillSizes(){
+    var s=el("c-size"); s.innerHTML="";
+    SIZES[st.item].forEach(function(z,i){ var o=document.createElement("option"); o.value=i; o.textContent=z; s.appendChild(o); });
+    if(st.size>=SIZES[st.item].length) st.size=0;
+    s.value=st.size;
+  }
+  el("c-item").addEventListener("change",function(e){ st.item=e.target.value; if(!st.colorTouched) st.color=DEFCOLOR[st.item]; fillSizes(); render(); });
+  el("c-size").addEventListener("change",function(e){ st.size=+e.target.value; render(); });
+  el("c-text").addEventListener("input",function(e){ st.text=e.target.value||""; render(); });
+  el("c-font").addEventListener("change",function(e){ st.font=e.target.value; render(); });
+
+  function render(){
+    var giOn=st.item==="gi";
+    el("photo-gi").style.display=giOn?"block":"none";
+    el("svg-hakama").style.display=giOn?"none":"block";
+    if(giOn){
+      var g=el("tx-gi"); g.textContent=st.text; g.style.color=COLORS[st.color][1]; g.style.fontFamily=FONTS[st.font];
+    } else {
+      var h=el("tx-hakama"); h.textContent=st.text; h.setAttribute("fill",COLORS[st.color][1]); h.style.fontFamily=FONTS[st.font];
+    }
+    el("c-pos-label").textContent=POSLABEL[st.item];
+    var active=giOn?el("photo-gi"):el("svg-hakama");
+    var clone=active.cloneNode(true); clone.removeAttribute("id"); clone.style.display="block";
+    var sp=el("sh-preview"); sp.innerHTML=""; sp.appendChild(clone);
+    document.querySelectorAll(".sw").forEach(function(b){ b.setAttribute("aria-pressed", (+b.dataset.idx)===st.color?"true":"false"); });
+    var isMetal=(COLORS[st.color][2]===37||COLORS[st.color][2]===38);
+    var cname=COLORS[st.color][0]+"（No."+COLORS[st.color][2]+"）"+(isMetal?"　別料金（2割増）":"");
+    el("c-colorname").textContent="— "+cname;
+
+    // pricing
+    var pprice = giOn ? giPrice(st.size) : hakamaPrice(st.size);
+    var chars = st.text.replace(/\s/g,"").length;
+    var ebase = 660 + Math.max(0, chars-3)*110;
+    var fontText = el("c-font").options[el("c-font").selectedIndex].text;
+    var factor=1; var no=COLORS[st.color][2];
+    if(no===37 || no===38) factor*=1.2;
+    if(fontText!=="楷書体" && fontText!=="行書体") factor*=1.2;
+    var eprice = Math.round(ebase*factor/10)*10;
+    var total = pprice + eprice;
+
+    el("s-item").textContent=ITEMNAME[st.item];
+    el("s-size2").textContent=SIZES[st.item][st.size];
+    el("s-pos").textContent=POSLABEL[st.item];
+    el("s-text").textContent=st.text||"（未入力）";
+    el("s-font").textContent=fontText;
+    el("s-color-name").textContent=cname;
+    el("s-color-dot").style.background=COLORS[st.color][1];
+    el("s-pprice").textContent=yen(pprice);
+    el("s-eprice").textContent=yen(eprice)+(factor>1?"（割増込）":"");
+    el("s-total").textContent=yen(total);
+  }
+  el("btn-print").addEventListener("click",function(){ window.print(); });
+  function buildSpec(){
+    return "【龍王 刺繍のご指定】"
+      +"\n品目："+el("s-item").textContent
+      +"\nサイズ："+el("s-size2").textContent
+      +"\n位置："+el("s-pos").textContent
+      +"\n文字："+(st.text||"（未入力）")
+      +"\n向き：縦書き"
+      +"\n書体："+el("s-font").textContent
+      +"\n糸色："+el("s-color-name").textContent
+      +"\n商品価格："+el("s-pprice").textContent
+      +"\n刺繍料金："+el("s-eprice").textContent
+      +"\n合計（税込）："+el("s-total").textContent;
+  }
+  el("btn-copy").addEventListener("click",function(){
+    var spec=buildSpec();
+    var msg="ご指定内容をコピーしました。\n「刺繍オプションを注文（STORES）」から進み、購入手続きの「備考」欄に貼り付けてください。\n※道着（本体）は別途ご注文が必要です。";
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(spec).then(function(){ alert(msg); },
+        function(){ window.prompt("下記をコピーして、STORESの「備考」欄に貼り付けてください：", spec); });
+    } else {
+      window.prompt("下記をコピーして、STORESの「備考」欄に貼り付けてください：", spec);
+    }
+  });
+  (function(){ try{ var q=new URLSearchParams(location.search).get("item"); if(q==="hakama"||q==="gi"){ st.item=q; if(!st.colorTouched) st.color=DEFCOLOR[st.item]; el("c-item").value=q; } }catch(e){} })();
+  fillSizes(); render();
+})();
+</script>
+</body>
+</html>
